@@ -1,0 +1,46 @@
+extends layout
+
+block scripts
+  script(type="text/javascript", src="/javascripts/lib/chart.min.js")
+  script(type="text/javascript", src="https://cdn.socket.io/socket.io-1.4.5.js")
+  script(type="text/javascript", src="/javascripts/index.js")
+
+block content
+    #wrapper
+      // Sidebar
+      #sidebar-wrapper
+        ul.sidebar-nav
+          li.sidebar-brand
+            a(href='#')
+              | Kalman Tracking
+          li
+            a(href='#') measurement_log.csv (1)
+          li
+            a(href='#') measurement.csv (2)
+          li
+            a(href='#') measurement.csv (3)
+          li
+            a(href='#') state_log.csv (1)
+          li
+            a(href='#') About
+          li
+            a(href='#') Services
+          li
+            a(href='#') Contact
+      // /#sidebar-wrapper
+      // Page Content
+      #page-content-wrapper
+        .container-fluid
+          .row
+            .col-lg-12
+              h1 measurement_log.csv (1)
+              div
+                canvas#chart1(width="400", height="400")
+              a#menu-toggle.btn.btn-default(href='#menu-toggle') Toggle Menu
+
+    script.
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+

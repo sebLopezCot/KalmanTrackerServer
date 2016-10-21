@@ -1,15 +1,11 @@
 (function index(window){
 
 	// Init vars
-	// var socket = io();
+	var socket = io();
 
-	// socket.on('added', function(){
-	// 	console.log("Added as a listener to the event stream.");
-	// });
-
-	// socket.on('newCSV', function(data){
-	// 	console.log(data);
-	// });
+	socket.on('measurement', function(measurement){
+		console.log(measurement);
+	});
 
 	$(document).ready(function() {
 		var ctx = $("#chart1");

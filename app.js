@@ -57,6 +57,7 @@ app.use(function(err, req, res, next) {
 // Socket Events ----------------------------------------------------------
 
 io.on('connection', function(socket) {
+    socket.broadcast.emit('new connection');
     socket.on('measurement', function(measurement) {
         socket.broadcast.emit('measurement', measurement);
     });

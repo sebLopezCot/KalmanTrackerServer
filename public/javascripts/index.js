@@ -3,6 +3,10 @@
 	// Init vars
 	var socket = io();
 
+	socket.on('new connection', function(){
+		console.log('New connection');
+	});
+
 	socket.on('measurement', function(measurement){
 		console.log(measurement);
 	});

@@ -1,8 +1,9 @@
 extends layout
 
 block scripts
-  script(type="text/javascript", src="/javascripts/lib/chart.min.js")
   script(type="text/javascript", src="/socket.io/socket.io.js")
+  script(type="text/javascript", src="/javascripts/lib/smoothie.js")
+  script(type="text/javascript", src="/javascripts/graph2d.js")
   script(type="text/javascript", src="/javascripts/index.js")
 
 block content
@@ -35,8 +36,13 @@ block content
             .col-lg-12
               h1 measurement_log.csv (1)
               div
-                canvas#chart1(width="400", height="400")
+                h3 X Accelerometer
+                canvas#chartx(width="500", height="200")
+                br
+                h3 Y Accelerometer
+                canvas#charty(width="500", height="200")
               a#menu-toggle.btn.btn-default(href='#menu-toggle') Toggle Menu
+
 
     script.
       $("#menu-toggle").click(function(e) {

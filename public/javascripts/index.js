@@ -16,20 +16,35 @@
 		if(graphx != null && graphy != null){
 			var data = measurement.split(', ')
 				.map(function(el) {
-					return parseFloat(el.split(' ')[1]);
+					return parseFloat(el.replace(' ', '').split(':')[1]);
 				});
 
 			graphx.loadData(data[1]);
 			graphy.loadData(data[2]);
-
-			console.log(data);
 		}
 	});
 
+	var paused = false;
+
 	$(document).ready(function() {
-		graphx = new Graph2d("chartx");
-		window.graphx = graphx;
-		graphy = new Graph2d("charty");
+		graphx = new Graph2d("chartx", "#00ff00");
+		graphy = new Graph2d("charty", "#ff0000");
+
+		$('#pause').click(function(event) {
+			event.preventDefault();
+
+			if (paused) {
+				graphx.start();
+				graphy.start();
+				$(this).html("Pause");
+			} else {
+				graphx.stop();
+				graphy.stop();
+				$(this).html("Resume");
+			}
+
+			paused = !paused;
+		});
 	});
 
 })(window);

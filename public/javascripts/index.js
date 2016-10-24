@@ -22,9 +22,10 @@
 
 			// skip 0 which is timestamp
 			for(i=1; i < quantities.length; i++){
-				$("#chartdiv").append('<h3>'+quantities[i][0]+'</h3>');
-				$("#chartdiv").append('<canvas id="chart'+quantities[i][0]+'" width="500" height="200"/>');
-				$("#chartdiv").append('<br/>')
+				$("#chartdiv").append('<div id="'+quantities[i][0]+'div"></div>');
+				$("#"+quantities[i][0]+"div").append('<h3>'+quantities[i][0]+'</h3>');
+				$("#"+quantities[i][0]+"div").append('<canvas id="chart'+quantities[i][0]+'" width="500" height="200"/>');
+				$("#"+quantities[i][0]+"div").append('<br/>')
 
 				var color = "#ffffff";
 				if(quantities[i][0].toLowerCase().includes('x')){
@@ -70,6 +71,19 @@
 			}
 
 			paused = !paused;
+		});
+
+		$('#filterbox').on("change paste keyup", function(event) {
+			var filter = $(this);
+
+			$.each($('#chartdiv').children(), function(key, el){
+				var name = $(el).attr('id').replace('div', '');
+				if(name.toLowerCase().includes(filter.val())){
+					$(el).show();
+				} else {
+					$(el).hide();
+				}
+			});
 		});
 	});
 

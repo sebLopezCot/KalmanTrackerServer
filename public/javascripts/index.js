@@ -64,7 +64,7 @@
 				});
 				$(this).html("Pause");
 			} else {
-				graphs.forEach(function(){
+				graphs.forEach(function(graph){
 					graph.stop();
 				});
 				$(this).html("Resume");

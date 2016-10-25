@@ -3,8 +3,8 @@ var Graph2d = function Graph2d(canvas, color, range){
 
 	var smoothie = new SmoothieChart({
 		interpolation:'linear',
-		maxValue: bounds[1],
-		minValue: bounds[0],
+		maxValue: range[1],
+		minValue: range[0],
 		timestampFormatter: SmoothieChart.timeFormatter
 	});
 

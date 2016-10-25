@@ -37,12 +37,12 @@
 					color = "#0000ff";
 				}
 
-				var scaling = false;
+				var bounded = true;
 				if(quantities[i][0].toLowerCase().includes('p')){
-					scaling = true;
+					bounded = false;
 				}
 
-				graphs.push(new Graph2d("chart" + quantities[i][0], color, scaling));
+				graphs.push(new Graph2d("chart" + quantities[i][0], color, bounded));
 			}
 		}
 

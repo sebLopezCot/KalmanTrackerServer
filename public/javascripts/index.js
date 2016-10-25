@@ -39,7 +39,9 @@
 
 				var bounds;
 				if(quantities[i][0].toLowerCase().includes('p')){
-					bounds = [-25.0,25.0]
+					bounds = [-25.0,25.0];
+				} else {
+					bounds = [-10.0,10.0];
 				}
 
 				graphs.push(new Graph2d("chart" + quantities[i][0], color, bounds));

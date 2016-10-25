@@ -28,6 +28,7 @@
 				$("#"+quantities[i][0]+"div").append('<br/>')
 
 				var color = "#ffffff";
+
 				if(quantities[i][0].toLowerCase().includes('x')){
 					color = "#00ff00";
 				} else if (quantities[i][0].toLowerCase().includes('y')){
@@ -36,7 +37,12 @@
 					color = "#0000ff";
 				}
 
-				graphs.push(new Graph2d("chart" + quantities[i][0], color));
+				var scaling = false;
+				if(quantities[i][0].toLowerCase().includes('p')){
+					scaling = true;
+				}
+
+				graphs.push(new Graph2d("chart" + quantities[i][0], color, scaling));
 			}
 		}
 

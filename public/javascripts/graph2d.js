@@ -1,12 +1,22 @@
 
-var Graph2d = function Graph2d(canvas, color){
+var Graph2d = function Graph2d(canvas, color, bounded){
 
-	var smoothie = new SmoothieChart({
-		interpolation:'linear',
-		maxValue: 10.0,
-		minValue: -10.0,
-		timestampFormatter: SmoothieChart.timeFormatter
-	});
+	var smoothie;
+
+	if(bounded == null || bounded == true){
+		smoothie = new SmoothieChart({
+			interpolation:'linear',
+			maxValue: 10.0,
+			minValue: -10.0,
+			timestampFormatter: SmoothieChart.timeFormatter
+		});
+	} else {
+		smoothie = new SmoothieChart({
+			interpolation:'linear',
+			timestampFormatter: SmoothieChart.timeFormatter
+		});
+	}
+
 	this.chart = smoothie;
 	smoothie.streamTo(document.getElementById(canvas));
 

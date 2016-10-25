@@ -1,21 +1,14 @@
 
-var Graph2d = function Graph2d(canvas, color, bounded){
+var Graph2d = function Graph2d(canvas, color, range){
 
-	var smoothie;
+	var bounds = (range==null) ? [-10,10] : range;
 
-	if(bounded == null || bounded == true){
-		smoothie = new SmoothieChart({
-			interpolation:'linear',
-			maxValue: 10.0,
-			minValue: -10.0,
-			timestampFormatter: SmoothieChart.timeFormatter
-		});
-	} else {
-		smoothie = new SmoothieChart({
-			interpolation:'linear',
-			timestampFormatter: SmoothieChart.timeFormatter
-		});
-	}
+	var smoothie = new SmoothieChart({
+		interpolation:'linear',
+		maxValue: bounds[1],
+		minValue: bounds[0],
+		timestampFormatter: SmoothieChart.timeFormatter
+	});
 
 	this.chart = smoothie;
 	smoothie.streamTo(document.getElementById(canvas));
